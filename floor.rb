@@ -2,13 +2,14 @@ require_relative "player"
 require_relative "spider"
 require_relative "treasure"
 require_relative "room"
+require_relative "charlotte"
 
 class Floor
 
     def initialize()
         @player = Player.new("Urist McDwarf")
         room1 = Room.new("Cavern",  nil, Treasure.new())
-        room2 = Room.new("Spider's Nest",  nil, Treasure.new())
+        room2 = Room.new("Spider's Nest",  Charlotte.new(), nil)
         room3 = Room.new("Spider's Hoard",  Spider.new(), nil)
         room4 = Room.new("Shrine",  nil, Treasure.new())
 
