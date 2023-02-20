@@ -8,22 +8,17 @@ class Floor
 
     def initialize()
         @player = Player.new("Urist McDwarf")
-        room1 = Room.new("Cavern",  nil, Treasure.new())
-        room2 = Room.new("Spider's Nest",  Charlotte.new(), nil)
-        room3 = Room.new("Spider's Hoard",  Spider.new(), nil)
-        room4 = Room.new("Shrine",  nil, Treasure.new())
-
-        room1.setNorth(room2)
-        room2.setSouth(room1)
-        room2.setEast(room3)
-        room3.setWest(room2)
-        room3.setNorth(room4)
-        room4.setSouth(room3)
-
-        @current_room = room1
+        @desc_array = ["A damp cavern", "A spider's nest", "A small home carved into a cave mushroom", "An ancient hoard"]
+        @enemy_array = [Spider, Charlotte]
+        @encounter_array = [Treasure]
+        @MAX = 5
+        @current_room = Room.new(@desc_array[0], nil, Treasure.new)
+        recursive_generate(@current_room, @MAX)
+        
         @current_room.display()
         @current_room.describe()
 
+        
     end
 
     def get_player()
@@ -51,5 +46,79 @@ class Floor
         @current_room.display()
             
     end
+
+    def recursive_generate(room, value)
+        if(value == 0)
+            return
+        end
+
+        roll1 = rand(0..3)
+        roll2 = rand(0..3)
+        roll3 = rand(0..@enemy_array.length()-1)
+        roll4 = rand(0..@desc_array.length()-1)
+        roll5 = rand(0..@encounter_array.length()-1)
+
+        if(roll1 == 0)
+            if(room.getNorth == nil)
+                nextRoom = Room.new(@desc_array[roll4], @enemy_array[roll3].new, nil)
+                room.setNorth(nextRoom)
+                nextRoom.setSouth(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        elsif(roll1 == 1)
+            if(room.getSouth == nil)
+                nextRoom = Room.new(@desc_array[roll4], @enemy_array[roll3].new, nil)
+                room.setSouth(nextRoom)
+                nextRoom.setNorth(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        elsif(roll1 == 2)
+            if(room.getEast == nil)
+                nextRoom = Room.new(@desc_array[roll4], @enemy_array[roll3].new, nil)
+                room.setEast(nextRoom)
+                nextRoom.setWest(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        elsif(roll1 == 3)
+            if(room.getWest == nil)
+                nextRoom = Room.new(@desc_array[roll4], @enemy_array[roll3].new, nil)
+                room.setWest(nextRoom)
+                nextRoom.setEast(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        end
+    
+        if(roll2 == 0)
+            if(room.getNorth == nil)
+                nextRoom = Room.new(@desc_array[roll4], @enemy_array[roll3].new, nil)
+                room.setNorth(nextRoom)
+                nextRoom.setSouth(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        elsif(roll2 == 1)
+            if(room.getSouth == nil)
+                nextRoom = Room.new(@desc_array[roll4], nil, @encounter_array[roll5].new)
+                room.setSouth(nextRoom)
+                nextRoom.setNorth(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        elsif(roll2 == 2)
+            if(room.getEast == nil)
+                nextRoom = Room.new(@desc_array[roll4], nil, @encounter_array[roll5].new)
+                room.setEast(nextRoom)
+                nextRoom.setWest(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        elsif(roll2 == 3)
+            if(room.getWest == nil)
+                nextRoom = Room.new(@desc_array[roll4], @enemy_array[roll3].new, nil)
+                room.setWest(nextRoom)
+                nextRoom.setEast(room)
+                self.recursive_generate(nextRoom, value-1)
+            end
+        end
+    end
+
+        
 
 end

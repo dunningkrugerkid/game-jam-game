@@ -2,7 +2,7 @@ class Charlotte < Entity
 #credit to charlotte for the display string
     @@display_string = "
      /L/\\
-    |0 0 7
+    |0 0 |
     | V  |
      WWWW
      L  L 

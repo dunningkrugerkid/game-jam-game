@@ -20,12 +20,15 @@ class Game
                 @floor.go(user_input)
             end
 
+            if(user_input == "quit")
+                exit
+            end
+
             if @floor.get_current_room.get_enemy != nil
                 begin_combat(@floor.get_player, @floor.get_current_room.get_enemy)
                 if(@floor.get_player.get_health <= 0)
                     puts("YOU DIED!")
                     cont = false
-                end
                 else
                     @floor.get_current_room.set_enemy(nil)
                     @floor.get_current_room.set_encounter(Treasure.new()) 
@@ -69,6 +72,7 @@ class Game
             enemy.damage(dmg)
             puts(enemy.get_name + " has " + enemy.get_health.to_s + " health remaining!")
         end
+    end
 
 
 
