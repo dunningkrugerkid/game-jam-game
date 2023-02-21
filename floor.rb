@@ -3,22 +3,20 @@ require_relative "spider"
 require_relative "treasure"
 require_relative "room"
 require_relative "charlotte"
+require_relative "empty"
+require_relative "merchant"
+require_relative "end"
 
 class Floor
 
     def initialize()
         @player = Player.new("Urist McDwarf")
-        @desc_array = ["A damp cavern", "A spider's nest", "A small home carved into a cave mushroom", "An ancient hoard"]
+        @desc_array = ["A damp cavern", "A spider's nest", "A small home carved into a cave mushroom", "An ancient hoard", "A beautiful crystal cave", "An old dwarven shrine", "A looted granary", "A humming cave"]
         @enemy_array = [Spider, Charlotte]
-        @encounter_array = [Treasure]
-        @MAX = 5
-        @current_room = Room.new(@desc_array[0], nil, Treasure.new)
+        @encounter_array = [Treasure, Empty, Merchant]
+        @MAX = 15
+        @current_room = Room.new("A staircase down...", nil, End.new())
         recursive_generate(@current_room, @MAX)
-        
-        @current_room.display()
-        @current_room.describe()
-
-        
     end
 
     def get_player()
@@ -49,6 +47,8 @@ class Floor
 
     def recursive_generate(room, value)
         if(value == 0)
+            room.set_encounter(Empty.new())
+            @current_room = room
             return
         end
 
@@ -57,6 +57,8 @@ class Floor
         roll3 = rand(0..@enemy_array.length()-1)
         roll4 = rand(0..@desc_array.length()-1)
         roll5 = rand(0..@encounter_array.length()-1)
+
+        
 
         if(roll1 == 0)
             if(room.getNorth == nil)

@@ -11,6 +11,7 @@ class Spider < Entity
 
     def initialize()
         super("Cave Spider")
+        @health = 50
         set_description("Doesn't want you in her parlor.")
         set_display(@@display_string)
         set_short_display("S")
