@@ -7,6 +7,7 @@ class Player < Entity
         @potions = 3
         @attack_bonus = 0
         @gold = 0
+        @mana = 15
     end
 
     def get_potions()

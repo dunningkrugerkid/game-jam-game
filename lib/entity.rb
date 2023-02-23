@@ -36,7 +36,6 @@ class Entity
     def display_stats()
         puts "\n" + @name
         puts "HP: " + @health.to_s
-        puts "MP: " + @mana.to_s
     end
 
     def display()
@@ -57,6 +56,10 @@ class Entity
 
     def add_mana(amt)
         @mana+=amt
+    end
+
+    def get_mana()
+        return @mana
     end
 
     def damage(amt)

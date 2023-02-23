@@ -14,6 +14,7 @@ class Game
 
     def play()
         cont = true
+        play_intro()
         while cont
             @floor.get_current_room.display
             @floor.get_current_room.describe
@@ -66,6 +67,7 @@ class Game
         enemy.overall_status
 
         while (player.get_health > 0) && (enemy.get_health > 0)
+            puts("You have " + player.get_health.to_s + "HP and " + player.get_mana.to_s + " MP.")
             puts("actions: potion/attack/spell")
             user_input = $stdin.gets.chomp.downcase
 
@@ -80,6 +82,7 @@ class Game
 
         if(enemy.get_health <= 0)
             puts("Defeated " + enemy.get_name + "!")
+            player.add_mana(5)
         end
         sleep(1)
         system "clear"
@@ -103,10 +106,40 @@ class Game
             enemy.damage(dmg)
             puts(enemy.get_name + " has " + enemy.get_health.to_s + " health remaining!")
         else
-            puts("You perform a parlor trick! Your opponent is very impressed, but they'll keep attacking.")
+            if(player.get_mana >= 5)
+                dmg = rand(10..50)
+                puts("\nYou perform ancient runic magic. Your foe is wounded for " + dmg.to_s + " damage!")
+                enemy.damage(dmg)
+                puts(enemy.get_name + " has " + enemy.get_health.to_s + " health remaining!")
+                player.remove_mana(5)
+                puts(player.get_potions.to_s + " potions remaining!")
+            else
+                puts("Not enough MP!")
+                puts("You perform a parlor trick! Your opponent is very impressed, but they'll keep attacking.")
+            end
         end
     end
 
+    def play_intro()
 
+        puts " 
+    ____ ___             __            __     /\\           ________                                __   
+    |    |   \\ _______  |__|   ______ _/  |_  )/   ______  \\_____  \\    __ __    ____     ______ _/  |_ 
+    |    |   / \\_  __ \\ |  |  /  ___/ \\   __\\     /  ___/   /  / \\  \\  |  |  \\ _/ __ \\   /  ___/ \\   __\\
+    |    |  /   |  | \\/ |  |  \\___ \\   |  |       \\___ \\   /   \\_/.  \\ |  |  / \\  ___/   \\___ \\   |  |  
+    |______/    |__|    |__| /____  >  |__|      /____  >  \\_____\\ \\_/ |____/   \\___  > /____  >  |__|  
+                                  \\/                  \\/          \\__>              \\/       \\/         "
+
+        puts "\n\n\nYou are Urist, a dwarf of great adventuring repute. For years you have dreamed of returning to your people's old home, long-since claimed by the denizens of the deep.\nThe journey so far has been long and taxing, but nothing compared to the challenge that lies before you..."
+        sleep(10)
+        system "clear"
+        system "cls"
+        puts "You descend ever deeper..."
+        sleep(2)
+        system "clear"
+        system "cls"
+
+    end
 
 end
+

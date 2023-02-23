@@ -6,14 +6,18 @@ require_relative "charlotte"
 require_relative "empty"
 require_relative "merchant"
 require_relative "end"
+require_relative "cavelizard"
+require_relative "heal"
+require_relative "bandit"
+require_relative "skeleton"
 
 class Floor
 
     def initialize()
         @player = Player.new("Urist McDwarf")
         @desc_array = ["A damp cavern", "A spider's nest", "A small home carved into a cave mushroom", "An ancient hoard", "A beautiful crystal cave", "An old dwarven shrine", "A looted granary", "A humming cave"]
-        @enemy_array = [Spider, Charlotte]
-        @encounter_array = [Treasure, Empty, Merchant]
+        @enemy_array = [Spider, Charlotte, CaveLizard, Bandit, Skeleton]
+        @encounter_array = [Treasure, Empty, Merchant, Heal]
         @MAX = 15
         @current_room = Room.new("A staircase down...", nil, End.new())
         recursive_generate(@current_room, @MAX)
