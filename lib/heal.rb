@@ -6,9 +6,9 @@ class Heal < Encounter
         @short_display = "H"
         @display = "          
 
-        _                     _
+         _                     _
         (_).-----------------.(_)
-        /.'                   '.\
+        /.'                   '.\\
         |:                     :|
         |:                     :|
         |:                     :|

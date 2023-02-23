@@ -24,7 +24,7 @@ class Merchant < Encounter
         puts("Enter health/attack/quit to buy or leave.")
         user_input = $stdin.gets.chomp
 
-        while(user_input != "q")
+        while(user_input != "quit")
             if user_input == "health" && player.get_gold >= cost1
                 player.change_gold((0 - cost1))
                 puts("Bought a health potion!")

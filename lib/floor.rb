@@ -10,6 +10,7 @@ require_relative "cavelizard"
 require_relative "heal"
 require_relative "bandit"
 require_relative "skeleton"
+require_relative "lore"
 
 class Floor
 
@@ -17,7 +18,7 @@ class Floor
         @player = Player.new("Urist McDwarf")
         @desc_array = ["A damp cavern", "A spider's nest", "A small home carved into a cave mushroom", "An ancient hoard", "A beautiful crystal cave", "An old dwarven shrine", "A looted granary", "A humming cave"]
         @enemy_array = [Spider, Charlotte, CaveLizard, Bandit, Skeleton]
-        @encounter_array = [Treasure, Empty, Merchant, Heal]
+        @encounter_array = [Treasure, Empty, Merchant, Heal, Lore]
         @MAX = 15
         @current_room = Room.new("A staircase down...", nil, End.new())
         recursive_generate(@current_room, @MAX)
@@ -32,6 +33,8 @@ class Floor
     end
 
     def go(direction)
+        system "clear"
+        system "cls"
         if direction == "north" && (@current_room.getNorth != nil)
             @current_room = @current_room.getNorth
         elsif direction == "south" && (@current_room.getSouth != nil)

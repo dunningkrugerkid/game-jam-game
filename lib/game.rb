@@ -9,7 +9,7 @@ class Game
         @floor = Floor.new()
         @valid_directions = ["north", "south", "east", "west"]
         @valid_actions = ["attack", "potion", "spell"]
-        @attack_array = ["swung", "slapped", "carefully insulted", "stabbed", "bit", "scratched", "read Vogon poetry", "screamed until glass broke", "mashed", "moped", "flashed shiny teeth"]
+        @attack_array = ["swung", "beat", "slapped", "carefully insulted", "stabbed", "bit", "scratched", "read Vogon poetry", "screamed until glass broke", "mashed", "moped", "flashed shiny teeth"]
     end
 
     def play()
@@ -44,9 +44,11 @@ class Game
                 end
             end
 
-            sleep(1)
-            system "clear"
-            system "cls"
+            if !@floor.get_current_room.get_encounter.is_a?Empty
+                sleep(1)
+                system "clear"
+                system "cls"
+            end
 
             if(!@floor.get_current_room.get_encounter.is_a?Empty)
                 if(@floor.get_current_room.get_encounter.is_a?End)
