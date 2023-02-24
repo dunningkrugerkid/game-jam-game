@@ -2,23 +2,7 @@ class End < Encounter
   def initialize()
     @description = "A way out?"
     @short_display = "U"
-    @display = "
-
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-        ╬═╬
-
-        "
+    @display = Art.instance.ladder
   end
 
   def encounter(player)

@@ -1,21 +1,6 @@
 class Skeleton < Entity
-  #credit to charlotte for the display string
-  @@display_string = "
-         .-.
-        (o.o)
-         |=|
-        __|__
-      //.=|=.\\\\
-     // .=|=. \\\\
-     \\\\ .=|=. //
-      \\\\(_=_)//
-       (:| |:)
-        || ||
-        () ()
-        || ||
-        || ||
-       ==' '==
-          "
+  # credit to charlotte for the display string
+  @@display_string = Art.instance.skeleton
 
   def initialize()
     super("Skeleton")

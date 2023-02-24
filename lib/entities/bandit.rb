@@ -1,17 +1,5 @@
 class Bandit < Entity
-  @@display_string = "
-
-          .-.
-        __|=|__
-       (_/`-`\\_)
-       //\\___/\\\\
-       <>/   \\<>
-        \\|_._|/
-         <_I_>
-          |||
-         /_|_\\
-
-          "
+  @@display_string = Art.instance.bandit
 
   def initialize()
     super("Bandit")
