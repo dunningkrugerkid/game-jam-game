@@ -26,7 +26,6 @@ class Floor
     @MAX = 15
     @current_room = Room.new("A staircase down...", nil, End.new())
     recursive_generate(@current_room, @MAX)
-    @current_room.set_encounter(Empty.new())
   end
 
   def get_player()
@@ -35,6 +34,10 @@ class Floor
 
   def get_current_room()
     return @current_room
+  end
+
+  def set_current_room(room)
+    @current_room = room
   end
 
   def go(direction)
@@ -59,7 +62,7 @@ class Floor
   def recursive_generate(room, value)
     if (value == 0)
       room.set_encounter(Empty.new())
-      @current_room = room
+      set_current_room(room)
       return
     end
 
