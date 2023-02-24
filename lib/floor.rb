@@ -35,13 +35,13 @@ class Floor
     def go(direction)
         system "clear"
         system "cls"
-        if direction == "north" && (@current_room.getNorth != nil)
+        if (direction.downcase == "north" || direction.downcase == "n") && (@current_room.getNorth != nil)
             @current_room = @current_room.getNorth
-        elsif direction == "south" && (@current_room.getSouth != nil)
+        elsif (direction.downcase == "south" || direction.downcase == "s") && (@current_room.getSouth != nil)
             @current_room = @current_room.getSouth
-        elsif direction == "east" && (@current_room.getEast != nil)
+        elsif (direction.downcase == "east" || direction.downcase == "e") && (@current_room.getEast != nil)
             @current_room = @current_room.getEast
-        elsif direction == "west" && (@current_room.getWest != nil)
+        elsif (direction.downcase == "west" || direction.downcase == "w") && (@current_room.getWest != nil)
             @current_room = @current_room.getWest
         else
             puts("No passage!\n")

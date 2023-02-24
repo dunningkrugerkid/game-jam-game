@@ -7,7 +7,7 @@ class Game
 
     def initialize()
         @floor = Floor.new()
-        @valid_directions = ["north", "south", "east", "west"]
+        @valid_directions = ["north", "south", "east", "west", "n", "s", "e", "w"]
         @valid_actions = ["attack", "potion", "spell"]
         @attack_array = ["swung", "beat", "slapped", "carefully insulted", "stabbed", "bit", "scratched", "read Vogon poetry", "screamed until glass broke", "mashed", "moped", "flashed shiny teeth"]
     end
@@ -23,8 +23,10 @@ class Game
                 
             if(@valid_directions.include? user_input)
                 @floor.go(user_input)
-            elsif(user_input == "quit")
+            elsif(user_input == "quit"||user_input == "exit")
                 exit
+            elsif(user_input == "help")
+                puts("valid commands: (n)orth/(s)outh/(e)ast/(w)est)")
             else(puts "I'm not gonna guess! Enter a valid command.")
                 sleep(2)
                 system "clear"
@@ -75,6 +77,8 @@ class Game
 
             if(@valid_actions.include? user_input)
                 take_action(user_input, player, enemy)
+            else
+                next
             end
             dmg = rand(1..15)
             puts("\n" +enemy.get_name + " " + @attack_array.sample + " for " + dmg.to_s + " damage!")
