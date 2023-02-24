@@ -1,21 +1,5 @@
 class CaveLizard < Entity
-  @@display_string = "
-
-
-       __  ,
-      (' \\ \\
-       \\ \\\\/
-     '\\/\\ \\\\
-         \\ \\\\/\\,
-          \\ \\\\
-          /\\ \\\\
-          \\ `\\\\\\
-          '   `\\\\
-                \\\\
-                 \\\\
-                  \\\\    ,
-                   `---'
-          "
+  @@display_string = Art.instance.cavelizard
 
   def initialize()
     super("Cave Lizard")

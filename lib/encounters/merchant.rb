@@ -3,14 +3,7 @@ class Merchant < Encounter
     @gold_value = rand(10..20)
     @description = "Even in these deep caverns, the allure of profit is too much for some to resist. A kobold merchant gestures wildly at their wares. You grin and bear the stench, for a time."
     @short_display = "K"
-    @display = "
-
-        \\  |  /
-        | o o |
-        |  v  |
-        |  W  |
-         \\ _ /
-"
+    @display = Art.instance.merchant
   end
 
   def encounter(player)

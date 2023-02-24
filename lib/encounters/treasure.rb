@@ -3,27 +3,7 @@ class Treasure < Encounter
     @gold_value = rand(10..20)
     @description = "The dwarves of yore made mighty spells... and also left piles of gold lying around."
     @short_display = "X"
-    @display = "
-             _.--.
-        _.-'_:-'||
-    _.-'_.-::::'||
-_.-:'_.-::::::'  ||
-.'`-.-:::::::'     ||
-/.'`;|:::::::'      ||_
-||   ||::::::'     _.;._'-._
-||   ||:::::'  _.-!oo @.!-._'-.
-\\'.  ||:::::.-!()oo @!()@.-'_.|
-'.'-;|:.-'.&$@.& ()$%-'o.'\\U||
-`>'-.!@%()@'@_%-'_.-o _.|'||
-||-._'-.@.-'_.-' _.-o  |'||
-||=[ '-._.-\\U/.-'    o |'||
-|| '-.]=|| |'|      o  |'||
-||      || |'|        _| ';
-||      || |'|    _.-'_.-'
-|'-._   || |'|_.-'_.-'
- '-._'-.|| |' `_.-'
-    '-.||_/.-'
-"
+    @display = Art.instance.treasure
   end
 
   def encounter(player)

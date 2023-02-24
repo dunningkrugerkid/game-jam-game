@@ -1,3 +1,4 @@
+require_relative "art"
 require_relative "floor"
 
 class Game
@@ -126,14 +127,7 @@ class Game
   end
 
   def play_intro()
-    puts "
-     ____ ___             __           __     /\\           ________                                __
-    |    |   \\ _______  |__|   ______ _/  |_  )/   ______  \\_____  \\    __ __    ____     ______ _/  |_
-    |    |   / \\_  __ \\ |  |  /  ___/ \\   __\\     /  ___/   /  / \\  \\  |  |  \\ _/ __ \\   /  ___/ \\   __\\
-    |    |  /   |  | \\/ |  |  \\___ \\   |  |       \\___ \\   /   \\_/.  \\ |  |  / \\  ___/   \\___ \\   |  |
-    |______/    |__|    |__| /____  >  |__|      /____  >  \\_____\\ \\_/ |____/   \\___  > /____  >  |__|
-                                  \\/                  \\/          \\__>              \\/       \\/         "
-
+    puts Art.instance.intro
     puts "\n\n\nYou are Urist, a dwarf of great adventuring repute. For years you have dreamed of returning to your people's old home, long-since claimed by the denizens of the deep.\nThe journey so far has been long and taxing, but nothing compared to the challenge that lies before you..."
     sleep(10)
     system "clear"

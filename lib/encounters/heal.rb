@@ -2,26 +2,7 @@ class Heal < Encounter
   def initialize()
     @description = "A place to sit marks a moment of brief relaxation and recovery during your journey."
     @short_display = "H"
-    @display = "
-
-         _                     _
-        (_).-----------------.(_)
-        /.'                   '.\\
-        |:                     :|
-        |:                     :|
-        |:                     :|
-        |:                     :|
-        .'---------------------'.
-      .'                         '.
-    .'-----------------------------'.
-      '.............................'
-      \\   _____________________   /
-       | |_)                 (_| |
-       | |                     | |
-       | |                     | |
-      (___)                   (___)
-
-        "
+    @display = Art.instance.end
   end
 
   def encounter(player)

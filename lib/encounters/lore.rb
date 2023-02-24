@@ -2,17 +2,7 @@ class Lore < Encounter
   def initialize()
     @description = "You encounter some engraved dwarven runes. You can just barely glean their meaning, with much effort..."
     @short_display = "P"
-    @display = "
-        |    |\\   |      /|  |\\  |/
-        |/   | |  |>     /|  |/  |
-        |/   |    |       |  |\\  |
-
-
-        \\|/     \\|   |   |   /   /|\\
-           X       |   |   |   \    |
-        /|\\      |\\  |  /|   /    |
-
-        "
+    @display = Art.instance.lore
     @lore_list = ["Drums, drums, drums... that infernal drumming.",
                   "Remember the fallen of Disi's expedition - 2786 B.A.D. Disi wrote this.",
                   "These warrens were abandoned following Thorek's Southmarch.",
