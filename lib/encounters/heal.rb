@@ -1,10 +1,8 @@
-require_relative "encounter"
 class Heal < Encounter
-
-    def initialize()
-        @description = "A place to sit marks a moment of brief relaxation and recovery during your journey."
-        @short_display = "H"
-        @display = "          
+  def initialize()
+    @description = "A place to sit marks a moment of brief relaxation and recovery during your journey."
+    @short_display = "H"
+    @display = "
 
          _                     _
         (_).-----------------.(_)
@@ -22,17 +20,14 @@ class Heal < Encounter
        | |                     | |
        | |                     | |
       (___)                   (___)
-         
+
         "
+  end
 
-        
-    end
-
-    def encounter(player)
-        puts(@display)
-        puts("\n\n" + @description)
-        player.heal(25)
-        puts("\nHealed for 25!")
-    end
-
+  def encounter(player)
+    puts(@display)
+    puts("\n\n" + @description)
+    player.heal(25)
+    puts("\nHealed for 25!")
+  end
 end
