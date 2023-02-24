@@ -39,6 +39,7 @@ class Game
                 if(@floor.get_player.get_health <= 0)
                     puts("YOU DIED!")
                     cont = false
+                    exit
                 else
                     @floor.get_current_room.set_enemy(nil)
                     gold_value = rand(10..20)
