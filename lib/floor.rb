@@ -22,6 +22,7 @@ class Floor
         @MAX = 15
         @current_room = Room.new("A staircase down...", nil, End.new())
         recursive_generate(@current_room, @MAX)
+        @current_room.set_encounter(Empty.new())
     end
 
     def get_player()

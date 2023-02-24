@@ -1,7 +1,7 @@
 class Skeleton < Entity
     #credit to charlotte for the display string
         @@display_string = "
-        .-.
+         .-.
         (o.o)
          |=|
         __|__

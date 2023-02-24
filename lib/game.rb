@@ -41,7 +41,10 @@ class Game
                     cont = false
                 else
                     @floor.get_current_room.set_enemy(nil)
-                    @floor.get_current_room.set_encounter(Treasure.new())
+                    gold_value = rand(10..20)
+                    puts("\nFound " + gold_value.to_s + " gold!")
+                    sleep(2)
+                    @floor.get_current_room.set_encounter(Empty.new())
                     @floor.get_current_room.display()
                 end
             end
@@ -72,6 +75,7 @@ class Game
 
         while (player.get_health > 0) && (enemy.get_health > 0)
             puts("You have " + player.get_health.to_s + "HP and " + player.get_mana.to_s + " MP.")
+            puts("You have " + player.get_potions.to_s + " potions.")
             puts("actions: potion/attack/spell")
             user_input = $stdin.gets.chomp.downcase
 
@@ -129,7 +133,7 @@ class Game
     def play_intro()
 
         puts " 
-    ____ ___             __            __     /\\           ________                                __   
+     ____ ___             __           __     /\\           ________                                __   
     |    |   \\ _______  |__|   ______ _/  |_  )/   ______  \\_____  \\    __ __    ____     ______ _/  |_ 
     |    |   / \\_  __ \\ |  |  /  ___/ \\   __\\     /  ___/   /  / \\  \\  |  |  \\ _/ __ \\   /  ___/ \\   __\\
     |    |  /   |  | \\/ |  |  \\___ \\   |  |       \\___ \\   /   \\_/.  \\ |  |  / \\  ___/   \\___ \\   |  |  
