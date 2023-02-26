@@ -3,7 +3,7 @@ class Spider < Entity
       |
       |
      _|
-///\(o_o)/\\\
+///\\(o_o)/\\\
 |||  ` '  |||"
 
   def initialize()
